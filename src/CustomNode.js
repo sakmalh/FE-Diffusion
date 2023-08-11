@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { Handle, Position } from 'reactflow';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 const ROOM_COLORS = {
     "Living Room": "#EE4D4D",
@@ -19,9 +19,18 @@ const ROOM_COLORS = {
 function CustomNode({ data }) {
   const type = data.type;
   const nodeColor = ROOM_COLORS[type] || '#FFFFFF';
+  const [inputValue, setInputValue] = useState('0'); // Initialize the input value
+
   const onChange = useCallback((evt) => {
-    data.corners = evt.target.value;
-  }, []);
+    const newValue = evt.target.value;
+    // Validate if the input value is a valid number
+    if (!isNaN(newValue) && newValue.trim() !== '') {
+      // Update the input value if it's a valid number
+      setInputValue(newValue);
+      // Update the data object
+      data.corners = newValue;
+    }
+  }, [data]);
 
   return (
     <div
@@ -32,7 +41,7 @@ function CustomNode({ data }) {
         <div className="ml-2">
           <div className="text-lg font-bold">{data.type}</div>
         </div>
-        <input id="text" type="text" style={{ backgroundColor: nodeColor }} defaultValue="0" name="text" onChange={onChange} className="nodrag w-10 px-2 mx-2 border-1 border-black" />
+        <input id="text" type="text" style={{ backgroundColor: nodeColor }} value={inputValue} name="text" onChange={onChange} className="nodrag w-10 px-2 mx-2 border-1 border-black" />
       </div>
       <Handle type="target" position={Position.Top} className="w-16 !bg-blue-200" />
       <Handle type="source" position={Position.Bottom} className="w-16 !bg-blue-200" />

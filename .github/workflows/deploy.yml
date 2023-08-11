@@ -3,11 +3,11 @@ name: Docker Build
 on:
   push:
     branches:
-      - main  # Adjust this to match your repository's main branch name
+      - main  
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can choose a different runner environment
+    runs-on: ubuntu-latest  
     steps:
     - name: Checkout code
       uses: actions/checkout@v2

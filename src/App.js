@@ -80,7 +80,9 @@ export default function App() {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [Error, setError] = useState(false);
   const [dataURIs, setDataURIs] = useState([]);
+  const [errorMessage, seterrorMessage] = useState('')
   const defaultViewport = { x: 0, y: 0, zoom: 2 };
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
@@ -102,6 +104,7 @@ export default function App() {
   }, []);
 
   const handleClose = () => setModalIsOpen(false);
+  const handleErrorClose = () => setError(false)
 
   const generate = () => {
     const simplifiedList = nodes.map(extractProperties);
@@ -114,12 +117,18 @@ export default function App() {
     
     setLoading(true);
     setModalIsOpen(true);
+    setError(false)
 
     fetch(`${apiHostname}/generate`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        setDataURIs(data.dataUri);
         setLoading(false);
+        if (data.dataUri) {
+          setDataURIs(data.dataUri);
+        } else if (data.Error) {
+          setError(true)
+          seterrorMessage(data.Error)
+        }
       });
   }
 
@@ -190,6 +199,8 @@ export default function App() {
               </div>
               <div className='text-2xl f font-semibold px-5'>Loading...</div>
             </div>       
+          ) : Error ? ( 
+            <div className="text-2xl text-red-600">Error occurred while generating layouts. {errorMessage}. Press Anywhere to Continue</div>
           ) : (
             <div>
                 <div className='flex flex-row p-5'>
@@ -208,7 +219,7 @@ export default function App() {
                     <img src={dataUri} className="w-full h-full border-2 border-black" alt={`Data URI ${index + 1}`} />
                 ))}
                 </div>
-                <div className='grid grid-cols-3 gap-1'>
+                <div className='grid grid-cols-3 gap-1 text-center'>
                 {roomTypes.map((type) => (
                   <div
                     key={type}

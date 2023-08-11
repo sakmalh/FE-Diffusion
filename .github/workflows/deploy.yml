@@ -1,0 +1,24 @@
+name: Docker Build
+
+on:
+  push:
+    branches:
+      - main  # Adjust this to match your repository's main branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # You can choose a different runner environment
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t sakmalh/fe-diffusion .
+
+    - name: Login to Docker Hub
+      env:
+        DOCKERPASS: ${{ secrets.DOCKERPASS }}
+      run: echo $DOCKERPASS | docker login -u sakmalh --password-stdin
+
+    - name: Push Docker image
+      run: docker push sakmalh/fe-diffusion

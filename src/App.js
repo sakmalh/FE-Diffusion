@@ -22,6 +22,8 @@ const getId = (nodes) => {
   }
 };
 
+const apiHostname = process.env.REACT_APP_API_HOSTNAME;
+
 const ROOM_COLORS = {
   "Living Room": "#EE4D4D",
   "Kitchen": "#C67C7B",
@@ -113,7 +115,7 @@ export default function App() {
     setLoading(true);
     setModalIsOpen(true);
 
-    fetch('http://0.0.0.0:8080/generate', requestOptions)
+    fetch(`${apiHostname}/generate`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setDataURIs(data.dataUri);

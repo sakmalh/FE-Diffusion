@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="256" height="256" viewBox="0 -256 256 256">
+<defs>
+</defs>
+<rect x="0" y="-256" width="256" height="256" fill="white" />
+<path d="M56.0,-144.0 L67.0,-144.0 L68.0,-145.0 L68.0,-180.0 L207.0,-180.0 L207.0,-129.0 L124.0,-129.0 L123.0,-128.0 L123.0,-77.0 L56.0,-77.0 L56.0,-116.0 L55.0,-117.0 L56.0,-117.0 Z" fill="#EE4D4D" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M124.0,-128.0 L211.0,-128.0 L211.0,-77.0 L124.0,-77.0 Z" fill="#FFD274" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M128.0,-132.0 L151.0,-132.0 L151.0,-125.0 L128.0,-125.0 Z" fill="#D3A2C7" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M56.0,-148.0 L63.0,-148.0 L63.0,-121.0 L56.0,-121.0 Z" fill="#727171" fill-opacity="1.0" stroke="black" stroke-width="1" />
+</svg>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="256" height="256" viewBox="0 -256 256 256">
+<defs>
+</defs>
+<rect x="0" y="-256" width="256" height="256" fill="white" />
+<path d="M44.0,-176.0 L131.0,-176.0 L131.0,-157.0 L132.0,-156.0 L179.0,-156.0 L179.0,-137.0 L180.0,-136.0 L215.0,-136.0 L215.0,-77.0 L136.0,-77.0 L136.0,-124.0 L135.0,-125.0 L44.0,-125.0 Z" fill="#EE4D4D" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M68.0,-124.0 L135.0,-124.0 L135.0,-77.0 L68.0,-77.0 Z" fill="#FFD274" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M40.0,-124.0 L67.0,-124.0 L67.0,-77.0 L40.0,-77.0 Z" fill="#BFE3E8" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M116.0,-132.0 L131.0,-132.0 L131.0,-121.0 L116.0,-121.0 Z" fill="#D3A2C7" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M64.0,-108.0 L71.0,-108.0 L71.0,-81.0 L64.0,-81.0 Z" fill="#D3A2C7" fill-opacity="1.0" stroke="black" stroke-width="1" />
+<path d="M128.0,-180.0 L139.0,-180.0 L139.0,-157.0 L128.0,-157.0 Z" fill="#727171" fill-opacity="1.0" stroke="black" stroke-width="1" />
+</svg>

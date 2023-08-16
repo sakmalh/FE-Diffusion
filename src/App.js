@@ -84,6 +84,11 @@ export default function App() {
   const [dataURIs, setDataURIs] = useState([]);
   const [errorMessage, seterrorMessage] = useState('')
   const defaultViewport = { x: 0, y: 0, zoom: 2 };
+  const [isToggleOn, setIsToggleOn] = useState(false);
+
+  const handleToggleChange = () => {
+    setIsToggleOn(!isToggleOn);
+  };
 
   const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
   const onEdgeUpdateStart = useCallback(() => {
@@ -112,7 +117,7 @@ export default function App() {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nodes: simplifiedList, edges: edges })
+      body: JSON.stringify({ nodes: simplifiedList, edges: edges, metrics: isToggleOn })
     };
     
     setLoading(true);
@@ -190,10 +195,18 @@ export default function App() {
         </div>
         <Sidebar />
       </ReactFlowProvider>
+      <label class="relative inline-flex items-center mb-3 cursor-pointer mt-5">
+        <input type="checkbox"
+          className="sr-only peer"
+          checked={isToggleOn}
+          onChange={handleToggleChange}/> 
+        <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+        <span class="ml-3 text-md font-medium text-gray-900 dark:text-gray-300">Metrics</span>
+      </label>
       <button className='mt-5 bg-transparent hover:bg-green-500 text-green-700 text-2xl hover:text-white py-2 px-4 border-2  border-green-500 hover:border-transparent rounded' onClick={() => generate()} disabled={loading}>Generate</button>
-        <Modal className="flex py-10 items-center justify-center" ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
+        <Modal className="h-screen flex py-10 bg-gray-100 bg-opacity-75 items-center justify-center" ariaHideApp={false} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)}>
         {loading ? (
-            <div className="flex items-center justify-center space-x-2 pt-80">
+            <div className="flex items-center justify-center">
               <div className="animate-spin inline-block w-12 h-12 border-[3px] border-current border-t-transparent text-blue-600 rounded-full" role="status" aria-label="loading">
                 <span className="sr-only">Loading...</span>
               </div>
